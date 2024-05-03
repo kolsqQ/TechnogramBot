@@ -14,20 +14,58 @@ namespace TechnogramBot
 {
     public class ButtonMenu
     {
-        [ReplyMenuHandler("Меню")]
+        [ReplyMenuHandler("/start")]
         public static async Task Menu(ITelegramBotClient botClient, Update update)
         {
-            var message = "Menu";
+            var user = update.Message.From;
+            var userName = $"{user.FirstName}";
 
+            var message = $"Привет {userName}! Рад видеть тебя. \nСкажи , ты новичок?";
             var menuList = new List<KeyboardButton>();
 
 
-            menuList.Add("1");
-            menuList.Add("2");
-            menuList.Add("3");
-            menuList.Add("4");
-            menuList.Add("5");
-            menuList.Add("6");
+            menuList.Add("Да");
+            menuList.Add("Нет");
+
+
+            var menu = MenuGenerator.ReplyKeyboard(2, menuList);
+
+            var option = new OptionMessage();
+            option.MenuReplyKeyboardMarkup = menu;
+            var sendMessag = await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
+        }
+
+        [ReplyMenuHandler("да" , "/help")]
+        public static async Task New(ITelegramBotClient botClient, Update update)
+        {
+
+            var message = "Выберите интересующий вас вопрос";
+            var menuList = new List<KeyboardButton>();
+
+
+            menuList.Add("Доступы инструментам");
+            menuList.Add("Регламенты");
+            menuList.Add("Испытательный срок");
+
+
+            var menu = MenuGenerator.ReplyKeyboard(2, menuList);
+
+            var option = new OptionMessage();
+            option.MenuReplyKeyboardMarkup = menu;
+            var sendMessag = await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
+        }
+        [ReplyMenuHandler("нет", "/old")]
+        public static async Task old(ITelegramBotClient botClient, Update update)
+        {
+
+            var message = "Выбери блок, по которому у тебя возник вопрос \n/hr - Адаптация, Обучение, Перф, Командировка, Увольнение. \n/service - Больничный Отпуск Отпуск за свой счет Командировка Выплаты (зарплата, больничный, отпускные) Заказ справок в бухгалтерии Изменение персональных данных, рождение ребенка. \n/саге - ДМС, бенефиты, выгорание, конфликтная ситуация.";
+            var menuList = new List<KeyboardButton>();
+
+
+            menuList.Add("Доступы инструментам");
+            menuList.Add("Регламенты");
+            menuList.Add("Испытательный срок");
+
 
             var menu = MenuGenerator.ReplyKeyboard(2, menuList);
 

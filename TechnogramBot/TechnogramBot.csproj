@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Npgsql" Version="8.0.2" />
     <PackageReference Include="PRTelegramBot" Version="0.5.5.1" />
   </ItemGroup>
 
