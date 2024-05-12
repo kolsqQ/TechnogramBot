@@ -2,7 +2,7 @@
 
 const string zxc = "exit";
 
-var botik = new PRBot(option =>
+var bot = new PRBot(option =>
 {
     option.Token = "6777113007:AAEFNCFVMHEylnlI-4XNswnOVOGMi0VIp3E";
     option.ClearUpdatesOnStart = true;
@@ -10,15 +10,10 @@ var botik = new PRBot(option =>
     option.BotId = 0;
 });
 
+bot.OnLogCommon += Telegram_OnLogCommon;
+bot.OnLogError += Telegram_OnLogError;
 
-
-
-
-botik.OnLogCommon += Telegram_OnLogCommon;
-botik.OnLogError += Telegram_OnLogError;
-
-
-await botik.Start();
+await bot.Start();
 
 void Telegram_OnLogError(Exception ex, long? id)
 {
@@ -30,7 +25,7 @@ void Telegram_OnLogError(Exception ex, long? id)
 
 void Telegram_OnLogCommon(string msg, Enum typeEvent, ConsoleColor color)
 {
-    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.ForegroundColor = ConsoleColor.Green;
     string message = $"{DateTime.Now}:{msg}";
     Console.WriteLine(message);
     Console.ResetColor();

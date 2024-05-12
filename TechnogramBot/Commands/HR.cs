@@ -8,38 +8,35 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Npgsql;
+using TechnogramBot.DataBase;
 
-namespace TechnogramBot
+
+namespace TechnogramBot.Commands
 {
-    public class main
+    public class hr
     {
-        [ReplyMenuHandler("ку")]
-        public static async Task ky(ITelegramBotClient botClient, Update update)
+        [ReplyMenuHandler("/hr")]
+        public static async Task HR(ITelegramBotClient botClient, Update update)
         {
-            string slonyara = "Host=localhost;Username=postgres;Password=TtHWz9;Database=telegrambotik";
-            string zapros = "SELECT * FROM test1";
-
-            NpgsqlConnection connection = new NpgsqlConnection(slonyara);
+            NpgsqlConnection connection = new NpgsqlConnection(Сonfig.connection);
             await connection.OpenAsync();
 
-            NpgsqlCommand command = new NpgsqlCommand(zapros, connection);
+            NpgsqlCommand command = new NpgsqlCommand(Сonfig.request, connection);
 
             NpgsqlDataReader reader = await command.ExecuteReaderAsync();
 
-            string message = "текст с базы данных:";
+            string message = "текст с базы данных: ";
 
             while (await reader.ReadAsync())
             {
-                string testValue = reader.GetString(1);
-                message += testValue + "\n";
+                string test = reader.GetString(1);
+                message += test + "\n";
             }
 
             var option = new OptionMessage();
             option.Message = message;
 
             await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
-
-
 
             connection.Close();
         }
