@@ -13,7 +13,7 @@ using TechnogramBot.DataBase;
 
 namespace TechnogramBot.Commands
 {
-    public class hr
+    public class Hr
     {
         [ReplyMenuHandler("/hr")]
         public static async Task HR(ITelegramBotClient botClient, Update update)

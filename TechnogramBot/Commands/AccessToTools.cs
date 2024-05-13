@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TechnogramBot.Commands
 {
-    internal class AccessToTools
+    public class AccessToTools
     {
     }
 }

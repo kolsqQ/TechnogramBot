@@ -10,6 +10,5 @@ namespace TechnogramBot.DataBase
     {
         public static string connection { get; set; } = "Host=localhost;Username=postgres;Password=TtHWz9;Database=telegrambotik";
         public static string request { get; set; } = "SELECT * FROM test1";
-
     }
 }
