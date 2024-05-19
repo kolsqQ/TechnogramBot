@@ -33,7 +33,7 @@ namespace TechnogramBot.Menu
             var sendMessag = await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
         }
 
-        [ReplyMenuHandler("да", "/help")]
+        [ReplyMenuHandler("да", "/new")]
         public static async Task New(ITelegramBotClient botClient, Update update)
         {
             var message = "Выберите интересующий вас вопрос";
@@ -42,17 +42,27 @@ namespace TechnogramBot.Menu
             menuList.Add("Доступы к инструментам");
             menuList.Add("Регламенты");
             menuList.Add("Испытательный срок");
-
+            
             var menu = MenuGenerator.ReplyKeyboard(2, menuList);
 
             var option = new OptionMessage();
             option.MenuReplyKeyboardMarkup = menu;
             var sendMessag = await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
         }
-        [ReplyMenuHandler("нет", "/old")]
+        [ReplyMenuHandler("нет", "/help")]
         public static async Task old(ITelegramBotClient botClient, Update update)
         {
-            var message = "Выбери блок, по которому у тебя возник вопрос \n/hr - Адаптация, Обучение, Перф, Командировка, Увольнение. \n/service - Больничный Отпуск Отпуск за свой счет Командировка Выплаты (зарплата, больничный, отпускные) Заказ справок в бухгалтерии Изменение персональных данных, рождение ребенка. \n/care - ДМС, бенефиты, выгорание, конфликтная ситуация.";
+            var message = "Выбери блок, по которому у тебя возник вопрос " +
+                "\n/hr - Адаптация, Обучение, Перф, Командировка, Увольнение. " +
+                "\n/service - Больничный Отпуск Отпуск за свой счет Командировка Выплаты (зарплата, больничный, отпускные) Заказ справок в бухгалтерии Изменение персональных данных, рождение ребенка. " +
+                "\n/care - ДМС, бенефиты, выгорание, конфликтная ситуация. " +
+                "\n/office - Адреса офисов, СКД, доступ на парковку, питание, Приобретение техники на рабочее место, Настройка доступа к принтеру, телефония, Проблемы с доступом к учетной записи, Проблемы с доступом к VPN, Проблемы с доступом." +
+                "\n/service - Больничный, Отпуск, Отпуск за свой счет, Компенсация за отпуск, Командировка, Выплаты (зарплата, больничный, отпускные), Заказ справок в бухгалтерии, Изменение персональных данных, рождение ребенка, Увольнение" +
+                "\n/feedback - Обратная связь" +
+                "\n/news - Поделиться новостью" +
+                "\n/new - Часто задаваемые вопросы новыми сотрудниками";
+
+
             var menuList = new List<KeyboardButton>();
 
             menuList.Add("/hr");
