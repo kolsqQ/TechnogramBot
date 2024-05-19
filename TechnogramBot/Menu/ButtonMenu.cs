@@ -65,9 +65,13 @@ namespace TechnogramBot.Menu
 
             var menuList = new List<KeyboardButton>();
 
-            menuList.Add("/hr");
-            menuList.Add("/service");
+            menuList.Add("HR-менеджмент");
+            menuList.Add("Сервис");
             menuList.Add("/саге");
+            menuList.Add("Офис");
+            menuList.Add("Сервис");
+            menuList.Add("Обратная связь");
+            menuList.Add("Поделиться новостью");
 
             var menu = MenuGenerator.ReplyKeyboard(2, menuList);
 
