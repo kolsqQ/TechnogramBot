@@ -49,7 +49,7 @@ namespace TechnogramBot.Menu
             option.MenuReplyKeyboardMarkup = menu;
             var sendMessag = await PRTelegramBot.Helpers.Message.Send(botClient, update, message, option);
         }
-        [ReplyMenuHandler("нет", "/help")]
+        [ReplyMenuHandler("нет", "/help", "Назад")]
         public static async Task old(ITelegramBotClient botClient, Update update)
         {
             var message = "Выбери блок, по которому у тебя возник вопрос " +

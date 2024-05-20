@@ -15,8 +15,8 @@ namespace TechnogramBot.Commands
 {
     public class Hr
     {
-        [ReplyMenuHandler("/hr")]
-        public static async Task HR(ITelegramBotClient botClient, Update update)
+        [ReplyMenuHandler("HR-менеджмент")]
+        public static async Task HRSection(ITelegramBotClient botClient, Update update)
         {
             NpgsqlConnection connection = new NpgsqlConnection(Сonfig.connection);
             await connection.OpenAsync();

@@ -20,14 +20,14 @@ namespace TechnogramBot.Commands
         {
             var message = "Выберите что вам необходимо";
             var menu = new List<IInlineContent>();
-
+            //сделать подкатегории 
             menu.Add(new InlineURL("Welcome book", "https://vc.ru/hr/804410-onbording-sotrudnikov-vykladyvayu-nash-glavnyy-dokument-welcomebook#:~:text=Welcomebook%20"));
             menu.Add(new InlineURL("Wifi,VPN", "https://ru.wikipedia.org/wiki/VPN"));
             menu.Add(new InlineURL("Zoom", "https://ru.wikipedia.org/wiki/Zoom"));
             menu.Add(new InlineURL("YouTrack", "https://ru.wikipedia.org/wiki/YouTrack"));
             menu.Add(new InlineURL("GitLab", "https://ru.wikipedia.org/wiki/GitLab"));
             menu.Add(new InlineURL("Обзор HelpDesk", "https://okdesk.ru/blog/chto-takoe-help-desk"));
-
+            
             var menuItems = MenuGenerator.InlineKeyboard(1,menu);
             var option = new OptionMessage();
             option.MenuInlineKeyboardMarkup = menuItems;

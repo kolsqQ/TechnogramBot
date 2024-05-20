@@ -6,7 +6,7 @@ var bot = new PRBot(option =>
 {
     option.Token = "6777113007:AAEFNCFVMHEylnlI-4XNswnOVOGMi0VIp3E";
     option.ClearUpdatesOnStart = true;
-    option.Admins = new List<long>() { };
+    option.Admins = new List<long>() { }; //добавить роль в бд
 });
 
 bot.OnLogCommon += Telegram_OnLogCommon;
