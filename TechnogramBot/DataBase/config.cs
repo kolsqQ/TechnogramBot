@@ -8,7 +8,7 @@ namespace TechnogramBot.DataBase
 {
     public class Сonfig
     {
-        public static string connection { get; set; } = "Host=localhost;Username=postgres;Password=123;Database=Bot";
+        public static string connection { get; set; } = "Host=localhost;Username=postgres;Password=xxxxxxx;Database=Bot";
         public static string request { get; set; } = "SELECT * FROM News";
     }
 }
